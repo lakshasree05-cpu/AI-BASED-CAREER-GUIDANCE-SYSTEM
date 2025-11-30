@@ -1,0 +1,1161 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>AI Career Guidance — 40 Careers</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<style>
+  :root{
+    --accent:#2b2f77;
+    --accent-2:#4b6bfb;
+    --muted:#6b7280;
+    --card:#ffffff;
+    --bg:#f6f8ff;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Arial; background:linear-gradient(180deg,#f7f9ff,#eef3ff); color:#111}
+  header{background:linear-gradient(90deg,var(--accent),var(--accent-2)); color:white;padding:36px 20px;text-align:center}
+  header h1{margin:0;font-size:28px;letter-spacing:0.4px}
+  .container{max-width:1100px;margin:20px auto;padding:16px}
+  .card{background:var(--card);border-radius:12px;padding:18px;margin-bottom:18px;box-shadow:0 8px 28px rgba(44,52,120,0.08)}
+  .row{display:flex;gap:12px;align-items:center}
+  .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  label{font-weight:600;font-size:13px;color:var(--muted);display:block;margin-bottom:6px}
+  input[type="text"], input[type="number"], select, textarea{width:100%;padding:10px;border-radius:8px;border:1px solid #e6e9fb;background:white;font-size:14px}
+  textarea{min-height:76px;resize:vertical}
+  .btn{background:var(--accent);color:white;padding:10px 14px;border-radius:10px;border:none;cursor:pointer}
+  .btn.secondary{background:#6b7280}
+  .lead{color:var(--muted);margin-top:6px}
+  .section-title{font-size:18px;margin:12px 0 8px 0;display:flex;justify-content:space-between;align-items:center}
+  .result-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+  .career-card{padding:12px;background:#fff;border-radius:10px;border:1px solid #f0f2ff}
+  .career-emoji{font-size:26px;margin-right:8px}
+  .tag{display:inline-block;background:#eef2ff;padding:6px 8px;border-radius:999px;font-size:12px;margin:4px 6px 0 0}
+  .detail-grid{display:grid;grid-template-columns:1fr 320px;gap:12px}
+  aside{background:#fff;border-radius:10px;padding:12px;border:1px solid #f3f4ff}
+  table{width:100%;border-collapse:collapse}
+  th,td{padding:8px;border:1px solid #f3f4ff;text-align:left}
+  footer{color:var(--muted);text-align:center;padding:14px 0}
+  /* chatbot */
+  #chatbot-btn{position:fixed;right:22px;bottom:22px;background:linear-gradient(90deg,#5742d8,#2b2f77);color:white;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 10px 30px rgba(43,47,119,0.18);z-index:9999}
+  #chatbot-window{position:fixed;right:22px;bottom:92px;width:360px;height:520px;background:white;border-radius:12px;box-shadow:0 18px 40px rgba(0,0,0,0.15);display:none;flex-direction:column;overflow:hidden;z-index:9999}
+  #chat-header{background:var(--accent);color:white;padding:12px;font-weight:700}
+  #chat-body{flex:1;padding:12px;overflow:auto;display:flex;flex-direction:column;gap:10px;background:linear-gradient(180deg,#fff,#fbfbff)}
+  .message{max-width:80%;padding:10px;border-radius:10px;font-size:14px}
+  .user{align-self:flex-end;background:#dfeeff}
+  .bot{align-self:flex-start;background:#f4f6fb}
+  #chat-input-area{display:flex;padding:10px;border-top:1px solid #eee}
+  #chat-input{flex:1;padding:8px;border-radius:8px;border:1px solid #ddd}
+  #mic-btn,#send-btn{margin-left:8px;padding:8px;border-radius:8px;border:none;background:var(--accent);color:white;cursor:pointer}
+  /* responsive */
+  @media (max-width:850px){ .form-grid{grid-template-columns:1fr} .detail-grid{grid-template-columns:1fr} #chatbot-window{right:10px;left:10px;width:auto} }
+</style>
+</head>
+<body>
+  <header>
+    <h1>AI  Based Career Guidance System </h1>
+    <div class="lead">Enter marks, interests or skills — get in-depth career suggestions, roadmaps, skills, salary and course recommendations.</div>
+  </header>
+
+  <main class="container">
+    <!-- Profile Card -->
+    <section class="card">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <div>
+          <h2 style="margin:0">Your Profile</h2>
+          <div class="lead">Fill basic details for better matching</div>
+        </div>
+        <div class="muted" style="color:var(--muted)">Demo • No data leaves your browser</div>
+      </div>
+
+      <div style="margin-top:12px" class="form-grid">
+        <div>
+          <label for="name">Name</label>
+          <input id="name" type="text" placeholder="Your name (optional)">
+        </div>
+        <div>
+          <label for="stream">Stream</label>
+          <select id="stream">
+            <option value="PCM">PCM (Maths)</option>
+            <option value="PCB">PCB (Biology)</option>
+            <option value="CSE">Computer Science</option>
+            <option value="Commerce">Commerce</option>
+            <option value="Arts">Arts</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="marks-maths">Main Subject Marks (0-100)</label>
+          <input id="marks-maths" type="number" min="0" max="100" value="80">
+        </div>
+        <div>
+          <label for="marks-others">Other Subject Marks (0-100)</label>
+          <input id="marks-others" type="number" min="0" max="100" value="78">
+        </div>
+
+        <div>
+          <label for="skill-prog">Programming Skill (1-5)</label>
+          <input id="skill-prog" type="range" min="1" max="5" value="3">
+          <div class="lead small">Value: <span id="prog-val">3</span></div>
+        </div>
+        <div>
+          <label for="skill-anal">Analytical (1-5)</label>
+          <input id="skill-anal" type="range" min="1" max="5" value="3">
+          <div class="lead small">Value: <span id="anal-val">3</span></div>
+        </div>
+
+        <div>
+          <label for="skill-creative">Creativity (1-5)</label>
+          <input id="skill-creative" type="range" min="1" max="5" value="3">
+          <div class="lead small">Value: <span id="creative-val">3</span></div>
+        </div>
+        <div>
+          <label for="interests">Interests (comma-separated)</label>
+          <input id="interests" placeholder="e.g. AI, Robotics, Medicine, Design">
+        </div>
+
+        <div style="grid-column:1 / -1">
+          <label for="worktype">What kind of work do you enjoy?</label>
+          <textarea id="worktype" placeholder="E.g. building apps, helping people, designing..."></textarea>
+        </div>
+      </div>
+
+      <div style="margin-top:12px;display:flex;gap:10px">
+        <button class="btn" id="get-btn">Get Career Suggestions</button>
+        <button class="btn secondary" id="clear-btn">Clear</button>
+        <button class="btn" id="voice-main">🎤 Voice Input</button>
+      </div>
+    </section>
+
+    <!-- Results -->
+    <section id="results" class="card" style="display:none">
+      <div class="section-title">
+        <h3 style="margin:0">Top Career Suggestions</h3>
+        <div class="lead small">Click a career to view full details</div>
+      </div>
+      <div id="suggestions-area" class="result-list"></div>
+
+      <hr style="border:none;margin:12px 0;border-top:1px dashed #eee">
+
+      <div id="detail-area"></div>
+    </section>
+
+    <footer>
+      Built locally — run in VS Code Live Server for full voice support.
+    </footer>
+  </main>
+
+  <!-- Chatbot UI -->
+  <div id="chatbot-btn" title="Open career chatbot">💬</div>
+  <div id="chatbot-window" role="dialog" aria-label="Career Chatbot">
+    <div id="chat-header">Career Assistant</div>
+    <div id="chat-body">
+      <div class="message bot">Hi! I'm the career assistant. Try: "Suggest careers for PCM 85 interested in AI"</div>
+    </div>
+    <div id="chat-input-area">
+      <input id="chat-input" placeholder="Ask about careers..." />
+      <button id="mic-btn" title="Voice input">🎤</button>
+      <button id="send-btn" title="Send">➤</button>
+    </div>
+  </div>
+
+<script>
+/*************************************************************************
+ * 40-career detailed dataset (emoji + details)
+ *************************************************************************/
+const CAREERS = [
+  {
+    id:"ai_engineer", title:"AI Engineer", emoji:"🤖",
+    overview:"Builds ML/DL models and AI systems for products — from research prototypes to production services.",
+    daily:"Data preprocessing, model training, experiments, collaborating with engineers to deploy models.",
+    skills:["Python","Machine Learning","Deep Learning","Maths","TensorFlow/PyTorch"],
+    roadmap:["Strong Maths & Programming","B.Tech CS/AI or relevant degree","ML & DL courses","Build 4-6 projects","Internships & Kaggle"],
+    salary:"Entry: ₹6–12 LPA • Senior: ₹20–50 LPA",
+    courses:["Coursera - Machine Learning (Andrew Ng)","DeepLearning.AI","Fast.ai"],
+    colleges:["IITs","IIITs","Top CS colleges"],
+    similar:["ml_engineer","data_scientist","software_dev"],
+    keywords:["ai","ml","deep learning","python","neural","robot"]
+  },
+
+  {
+    id:"data_scientist", title:"Data Scientist", emoji:"📊",
+    overview:"Extracts insights and builds predictive models from data to support business decisions.",
+    daily:"Data cleaning, exploratory analysis, modelling, dashboards, stakeholder communication.",
+    skills:["Python/R","Statistics","SQL","Data Viz","Machine Learning"],
+    roadmap:["Statistics & programming foundations","B.Tech/BSc/BA with math/stats","Build projects & portfolios","Internships"],
+    salary:"Entry: ₹5–10 LPA • Senior: ₹15–35 LPA",
+    courses:["IBM Data Science","Kaggle micro-courses"],
+    colleges:["IITs","IISc","Top universities"],
+    similar:["ai_engineer","business_analyst"],
+    keywords:["data","statistics","analysis","ml","python"]
+  },
+
+  {
+    id:"ml_engineer", title:"Machine Learning Engineer", emoji:"🧠",
+    overview:"Focuses on productionizing machine learning — pipelines, deployment, monitoring and model optimization.",
+    daily:"Building pipelines, containerization, model serving, monitoring performance.",
+    skills:["Python","MLOps","Docker","Kubernetes","Cloud"],
+    roadmap:["Programming + ML understanding","MLOps tools","Deploy models to cloud","Internships"],
+    salary:"Entry: ₹6–12 LPA • Senior: ₹18–40 LPA",
+    courses:["MLOps Specialization","Coursera ML Engineering"],
+    colleges:["IITs","IIITs"],
+    similar:["ai_engineer","software_dev"],
+    keywords:["mlops","deploy","pipeline","docker","kubernetes"]
+  },
+
+  {
+    id:"software_dev", title:"Software Developer", emoji:"💻",
+    overview:"Designs and implements software applications — backend, frontend or mobile.",
+    daily:"Writing code, debugging, code reviews, collaborating with product and QA teams.",
+    skills:["DSA","System Design","Programming (Java/Python/JS)"],
+    roadmap:["Strong programming basics","Practice DSA","Build projects & internships","Contribute to OSS"],
+    salary:"Entry: ₹3–8 LPA • Senior: ₹12–30 LPA",
+    courses:["CS50","Udemy Full Stack","LeetCode practice"],
+    colleges:["NITs","Private engineering colleges"],
+    similar:["fullstack_dev","product_engineer"],
+    keywords:["code","programming","developer","app","software","backend","frontend"]
+  },
+
+  {
+    id:"fullstack_dev", title:"Full-Stack Developer", emoji:"🌐",
+    overview:"Works on both frontend and backend to deliver web applications end-to-end.",
+    daily:"Building UI, APIs, databases, deployments and debugging cross-stack issues.",
+    skills:["HTML/CSS/JS","React/Angular","Node/Express","Databases"],
+    roadmap:["Web fundamentals","Frontend framework","Backend & DB","Deploy projects"],
+    salary:"Entry: ₹4–10 LPA • Senior: ₹12–30 LPA",
+    courses:["MERN Bootcamp","Full-Stack Specializations"],
+    colleges:["Various bootcamps & CS degrees"],
+    similar:["software_dev","web_dev"],
+    keywords:["html","css","javascript","react","node","web"]
+  },
+
+  {
+    id:"cyber_sec", title:"Cyber Security Analyst", emoji:"🔒",
+    overview:"Protects systems by identifying vulnerabilities, monitoring threats and improving defenses.",
+    daily:"Security audits, incident response, pen-testing, threat intelligence.",
+    skills:["Networking","Linux","Penetration Testing","SIEM"],
+    roadmap:["Networking fundamentals","Linux & scripting","Security certifications (CEH)","Hands-on labs"],
+    salary:"Entry: ₹4–10 LPA • Senior: ₹12–28 LPA",
+    courses:["CEH","Offensive Security labs"],
+    colleges:["IT security programs & certifications"],
+    similar:["pen_tester","security_engineer"],
+    keywords:["security","hacking","penetration","network"]
+  },
+
+  {
+    id:"data_analyst", title:"Data Analyst", emoji:"📈",
+    overview:"Cleans and visualizes data to provide actionable business insights and reports.",
+    daily:"Data wrangling, dashboards, reporting, KPI monitoring.",
+    skills:["SQL","Excel","Power BI/Tableau","Python/R"],
+    roadmap:["SQL & Excel","Visualization tools","SQL projects & reporting"],
+    salary:"Entry: ₹3–8 LPA • Senior: ₹8–20 LPA",
+    courses:["Google Data Analytics","Tableau courses"],
+    colleges:["Various bachelor programs"],
+    similar:["business_analyst","data_scientist"],
+    keywords:["excel","sql","report","dashboard","data"]
+  },
+
+  {
+    id:"civil_eng", title:"Civil Engineer", emoji:"🏗️",
+    overview:"Plans and oversees construction projects — buildings, roads and infrastructure.",
+    daily:"Design calculations, site supervision, coordination with contractors.",
+    skills:["Statics","Design","AutoCAD","Project Management"],
+    roadmap:["PCM in school","B.E/B.Tech Civil","Internships & site experience"],
+    salary:"Entry: ₹3–8 LPA • Senior: ₹8–20 LPA",
+    courses:["Structural design courses","AutoCAD"],
+    colleges:["IITs,NITs,State colleges"],
+    similar:["architect","environmental_engineer"],
+    keywords:["construction","building","infrastructure","civil","autocad"]
+  },
+
+  {
+    id:"mechanical_eng", title:"Mechanical Engineer", emoji:"🛠️",
+    overview:"Designs mechanical systems and machinery across industries.",
+    daily:"Design, prototyping, testing, CAD modeling.",
+    skills:["CAD","Thermodynamics","Mechanics"],
+    roadmap:["PCM","B.Tech Mechanical","CAD & workshops","Projects/internships"],
+    salary:"Entry: ₹3–8 LPA • Senior: ₹8–18 LPA",
+    courses:["AutoCAD","SolidWorks training"],
+    colleges:["IITs,NITs,State colleges"],
+    similar:["automobile_eng","production_eng"],
+    keywords:["mechanical","machines","cad","engines"]
+  },
+
+  {
+    id:"electrical_eng", title:"Electrical Engineer", emoji:"💡",
+    overview:"Works with power, circuits and electrical systems design and maintenance.",
+    daily:"Circuit design, testing, power systems analysis.",
+    skills:["Circuit Theory","Power Systems","Controls"],
+    roadmap:["PCM","B.Tech EEE","Labs & internships"],
+    salary:"Entry: ₹3–9 LPA • Senior: ₹8–18 LPA",
+    courses:["Power systems courses","Electronics labs"],
+    colleges:["IITs,NITs"],
+    similar:["electronics_eng"],
+    keywords:["electrical","circuits","power","eee"]
+  },
+
+  {
+    id:"electronics_eng", title:"Electronics Engineer", emoji:"🔌",
+    overview:"Designs electronic circuits, embedded systems and hardware products.",
+    daily:"PCB design, firmware, testing and debugging hardware.",
+    skills:["Embedded C","PCB Design","Analog/Digital Electronics"],
+    roadmap:["ECE degree","Embedded systems projects","Internships"],
+    salary:"Entry: ₹3–9 LPA • Senior: ₹10–25 LPA",
+    courses:["VLSI, Embedded systems"],
+    colleges:["IITs,IIITs,NITs"],
+    similar:["electrical_eng","vlsi_engineer"],
+    keywords:["electronics","pcb","vlsi","embedded"]
+  },
+
+  {
+    id:"vlsi_eng", title:"VLSI / Chip Designer", emoji:"🧩",
+    overview:"Designs integrated circuits (chips) used in devices and servers.",
+    daily:"RTL design, verification, timing closure, tapeouts.",
+    skills:["Verilog/VHDL","Digital Design","Timing Analysis"],
+    roadmap:["ECE background","VLSI specialization","Internships in semiconductor firms"],
+    salary:"Entry: ₹5–12 LPA • Senior: ₹18–45 LPA",
+    courses:["VLSI courses","ASIC flow training"],
+    colleges:["IITs,IIITs"],
+    similar:["electronics_eng","embedded_eng"],
+    keywords:["vlsi","chip","asic","verilog"]
+  },
+
+  {
+    id:"architecture", title:"Architect", emoji:"🏛️",
+    overview:"Designs functional and aesthetic buildings and spaces.",
+    daily:"Concept sketches, CAD/BIM modelling, client meetings.",
+    skills:["Design thinking","AutoCAD","BIM","Modeling"],
+    roadmap:["Strong art & maths","B.Arch degree","Portfolio & internships"],
+    salary:"Entry: ₹3–8 LPA • Senior: ₹10–30 LPA",
+    courses:["Architecture fundamentals","BIM tools"],
+    colleges:["NID,NITs,B.Arch colleges"],
+    similar:["civil_eng","interior_designer"],
+    keywords:["architecture","design","building","b.arch"]
+  },
+
+  {
+    id:"doctor", title:"Doctor (MBBS)", emoji:"🩺",
+    overview:"Diagnoses illnesses, treats patients and provides medical care — requires MBBS and possible specialization.",
+    daily:"Patient consultations, rounds, diagnostics and procedures (if surgical).",
+    skills:["Clinical knowledge","Communication","Decision-making"],
+    roadmap:["PCB in school","NEET","MBBS","Residency/Specialization"],
+    salary:"Entry: ₹4–10 LPA • Senior: ₹15–50 LPA",
+    courses:["MBBS, MD/MS specializations"],
+    colleges:["AIIMS,Top medical colleges"],
+    similar:["dentist","surgeon","physician"],
+    keywords:["medical","doctor","mbbs","neat","medicine"]
+  },
+
+  {
+    id:"dentist", title:"Dentist (BDS)", emoji:"🦷",
+    overview:"Treats oral health issues, dental surgeries and orthodontics.",
+    daily:"Patient exams, dental treatments, minor surgeries.",
+    skills:["Dental procedures","Manual dexterity","Patient care"],
+    roadmap:["PCB","NEET/BDS admissions","BDS & internships"],
+    salary:"Entry: ₹4–10 LPA • Senior: ₹10–30 LPA",
+    courses:["Dental specialties","Orthodontics"],
+    colleges:["Top dental colleges"],
+    similar:["doctor","orthodontist"],
+    keywords:["dentistry","teeth","dental","orthodontics"]
+  },
+
+  {
+    id:"pharmacist", title:"Pharmacist", emoji:"💊",
+    overview:"Specializes in medicines — dispensing, pharmacology and drug safety.",
+    daily:"Dispensing medication, counseling patients, pharmacovigilance.",
+    skills:["Pharmacology","Chemistry","Attention to detail"],
+    roadmap:["B.Pharm or D.Pharm","Pharma internships"],
+    salary:"Entry: ₹2–6 LPA • Senior: ₹6–15 LPA",
+    courses:["Pharmacy diplomas & M.Pharm"],
+    colleges:["Pharmacy colleges"],
+    similar:["lab_technician","pharma_research"],
+    keywords:["pharmacy","drugs","medicines","pharma"]
+  },
+
+  {
+    id:"nurse", title:"Nurse", emoji:"👩‍⚕️",
+    overview:"Provides bedside patient care, supports doctors and manages patient wellbeing.",
+    daily:"Vitals monitoring, patient care, assisting in procedures.",
+    skills:["Patient care","Empathy","Clinical skills"],
+    roadmap:["B.Sc Nursing/Diploma","Clinical rotations & licensure"],
+    salary:"Entry: ₹2–5 LPA • Senior: ₹6–12 LPA",
+    courses:["Nursing diplomas","Clinical training"],
+    colleges:["Nursing colleges & hospitals"],
+    similar:["doctor","physician_assistant"],
+    keywords:["nurse","patient","care","hospital"]
+  },
+
+  {
+    id:"lawyer", title:"Lawyer", emoji:"⚖️",
+    overview:"Advises clients, prepares legal documents and represents in courts.",
+    daily:"Legal research, drafting, court appearances.",
+    skills:["Research","Argumentation","Legal writing"],
+    roadmap:["BA LLB or LLB","Internships with law firms","Judicial exams (optional)"],
+    salary:"Entry: ₹3–8 LPA • Senior: ₹10–35 LPA",
+    courses:["LLB, specialized law courses"],
+    colleges:["NLSIU,NLU,top law schools"],
+    similar:["judge","legal_consultant"],
+    keywords:["law","legal","court","advocate"]
+  },
+
+  {
+    id:"chartered_accountant", title:"Chartered Accountant (CA)", emoji:"📑",
+    overview:"Handles audit, tax, accounting, and financial advisory.",
+    daily:"Audits, tax filings, financial reporting, client advisory.",
+    skills:["Accounting","Taxation","Financial analysis"],
+    roadmap:["Commerce background","CA foundation & articleship","Certification"],
+    salary:"Entry: ₹5–12 LPA • Senior: ₹15–45 LPA",
+    courses:["CA program (ICAI)"],
+    colleges:["Commerce colleges & CA institutes"],
+    similar:["finance_analyst","cfo"],
+    keywords:["ca","accounts","tax","audit","commerce"]
+  },
+
+  {
+    id:"finance_analyst", title:"Finance / Investment Analyst", emoji:"💼",
+    overview:"Works on valuations, modelling, investment decisions and corporate finance.",
+    daily:"Financial modelling, research, presentations and client work.",
+    skills:["Excel","Accounting","Valuation","SQL"],
+    roadmap:["B.Com/BBA/Finance","Certifications (CFA)","Internships"],
+    salary:"Entry: ₹4–12 LPA • Senior: ₹12–35 LPA",
+    courses:["CFA","Financial modelling courses"],
+    colleges:["Top commerce & business schools"],
+    similar:["chartered_accountant","investment_banker"],
+    keywords:["finance","investment","cfa","modeling"]
+  },
+
+  {
+    id:"business_analyst", title:"Business Analyst", emoji:"📋",
+    overview:"Bridges business and tech — analyzes processes and defines requirements.",
+    daily:"Stakeholder meetings, requirements, process improvements, data analysis.",
+    skills:["Excel","SQL","Communication","Process mapping"],
+    roadmap:["BBA/B.Tech","Analytics & domain knowledge","Internships"],
+    salary:"Entry: ₹3–8 LPA • Senior: ₹8–20 LPA",
+    courses:["Business analysis & analytics courses"],
+    colleges:["Various universities"],
+    similar:["data_analyst","product_manager"],
+    keywords:["business","analysis","process","requirement"]
+  },
+
+  {
+    id:"product_manager", title:"Product Manager", emoji:"📦",
+    overview:"Defines product vision, aligns stakeholders, manages roadmaps and launches.",
+    daily:"Product strategy, sprint planning, user research, metrics analysis.",
+    skills:["Product thinking","Communication","Data-driven decisions"],
+    roadmap:["Technical or business degree","Product courses & internships","PM experience"],
+    salary:"Entry: ₹6–12 LPA • Senior: ₹20–60 LPA",
+    courses:["Product management bootcamps"],
+    colleges:["Top universities & MBA programs"],
+    similar:["business_analyst","project_manager"],
+    keywords:["product","pm","roadmap","user"]
+  },
+
+  {
+    id:"uiux_designer", title:"UI/UX Designer", emoji:"🎨",
+    overview:"Designs user interfaces and experiences focusing on usability and visuals.",
+    daily:"Wireframing, prototyping, user testing and visual design work.",
+    skills:["Figma/Sketch","User research","Visual design"],
+    roadmap:["Design fundamentals","Tool mastery","Portfolio creation","Internships"],
+    salary:"Entry: ₹3–8 LPA • Senior: ₹10–25 LPA",
+    courses:["Google UX Design","Figma courses"],
+    colleges:["Design institutes & online specializations"],
+    similar:["graphic_designer","product_designer"],
+    keywords:["ux","ui","design","figma","prototype"]
+  },
+
+  {
+    id:"graphic_designer", title:"Graphic Designer", emoji:"🖌️",
+    overview:"Creates visual assets for media, brands and digital platforms.",
+    daily:"Designing marketing material, logos, layouts and visuals.",
+    skills:["Photoshop","Illustrator","Typography"],
+    roadmap:["Design tools","Portfolio","Freelance projects"],
+    salary:"Entry: ₹2–6 LPA • Senior: ₹6–18 LPA",
+    courses:["Graphic design courses"],
+    colleges:["Design schools & online classes"],
+    similar:["uiux_designer","animation_artist"],
+    keywords:["graphic","design","photoshop","art"]
+  },
+
+  {
+    id:"animation_artist", title:"Animation Artist", emoji:"🎬",
+    overview:"Produces 2D/3D animations for films, games and media.",
+    daily:"Animating scenes, modeling, rigging and post-production.",
+    skills:["Blender/Maya","Animation principles","Storyboarding"],
+    roadmap:["Animation tools","Portfolio","Internships"],
+    salary:"Entry: ₹2–6 LPA • Senior: ₹8–20 LPA",
+    courses:["Animation & VFX courses"],
+    colleges:["Animation institutes & colleges"],
+    similar:["graphic_designer","game_dev"],
+    keywords:["animation","3d","blender","vfx"]
+  },
+
+  {
+    id:"journalist", title:"Journalist", emoji:"📰",
+    overview:"Reports news, investigates stories and crafts content for media.",
+    daily:"Research, interviews, writing and publishing stories.",
+    skills:["Writing","Research","Communication"],
+    roadmap:["Mass Communication","Internships at media houses"],
+    salary:"Entry: ₹2–6 LPA • Senior: ₹8–20 LPA",
+    courses:["Journalism courses"],
+    colleges:["Journalism & mass communication colleges"],
+    similar:["writer","editor"],
+    keywords:["journalism","news","writing","report"]
+  },
+
+  {
+    id:"writer", title:"Writer / Author", emoji:"✍️",
+    overview:"Creates fiction/non-fiction content, books, articles and copy.",
+    daily:"Writing drafts, editing, research and publishing.",
+    skills:["Creativity","Language skills","Editing"],
+    roadmap:["Write daily","Build portfolio","Publish & market work"],
+    salary:"Varies widely (₹0–₹20L+ depending on success)",
+    courses:["Creative writing courses"],
+    colleges:["Creative writing programs & workshops"],
+    similar:["journalist","content_creator"],
+    keywords:["write","author","books","story"]
+  },
+
+  {
+    id:"content_creator", title:"Content Creator", emoji:"📹",
+    overview:"Makes videos, reels, tutorials and posts for digital audiences.",
+    daily:"Scripting, recording, editing and publishing content.",
+    skills:["Video editing","Storytelling","Social media growth"],
+    roadmap:["Choose niche","Create consistent content","Monetize & scale"],
+    salary:"Varies (ads, sponsorships, products) ₹0–₹30L+",
+    courses:["Content creation bootcamps"],
+    colleges:["Self-taught & online courses"],
+    similar:["digital_marketer","youtuber"],
+    keywords:["video","youtube","content","social"]
+  },
+
+  {
+    id:"digital_marketer", title:"Digital Marketer", emoji:"📣",
+    overview:"Promotes brands using organic and paid digital channels.",
+    daily:"Campaign management, SEO, analytics and content strategy.",
+    skills:["SEO","Ads","Analytics","Content"],
+    roadmap:["Learn SEO & Ads","Get certified (Google)","Run campaigns & internships"],
+    salary:"Entry: ₹3–8 LPA • Senior: ₹8–25 LPA",
+    courses:["Google Ads, SEO courses"],
+    colleges:["Marketing programs & online courses"],
+    similar:["content_creator","growth_marketer"],
+    keywords:["seo","ads","marketing","social"]
+  },
+
+  {
+    id:"chef", title:"Chef / Culinary Arts", emoji:"🍳",
+    overview:"Creates dishes, plans menus and manages kitchen operations.",
+    daily:"Cooking, plating, team coordination and quality control.",
+    skills:["Cooking techniques","Creativity","Time management"],
+    roadmap:["Culinary school or apprenticeship","Build recipes & experience"],
+    salary:"Entry: ₹2–6 LPA • Senior/Celebrity: ₹10–40 LPA+",
+    courses:["Culinary arts programs"],
+    colleges:["Hotel management & culinary institutes"],
+    similar:["hotel_manager","food_entrepreneur"],
+    keywords:["cook","chef","culinary","kitchen"]
+  },
+
+  {
+    id:"hotel_manager", title:"Hotel / Hospitality Manager", emoji:"🏨",
+    overview:"Oversees hotel operations, guest services and team management.",
+    daily:"Guest relations, operations, staff scheduling and budgeting.",
+    skills:["Customer service","Operations","Leadership"],
+    roadmap:["Hotel management degree","Internships in hotels"],
+    salary:"Entry: ₹2–6 LPA • Senior: ₹8–25 LPA",
+    courses:["Hospitality management"],
+    colleges:["IHM & hospitality institutes"],
+    similar:["chef","event_manager"],
+    keywords:["hotel","hospitality","guest","management"]
+  },
+
+  {
+    id:"fashion_designer", title:"Fashion Designer", emoji:"👗",
+    overview:"Designs apparel, garments and fashion lines.",
+    daily:"Sketching, sampling, trend research and production coordination.",
+    skills:["Creativity","Pattern making","Sewing & CAD"],
+    roadmap:["Design school","Portfolio & internships"],
+    salary:"Entry: ₹2–6 LPA • Senior: ₹8–30 LPA",
+    courses:["Fashion design courses"],
+    colleges:["NIFT & design institutes"],
+    similar:["textile_designer","stylist"],
+    keywords:["fashion","design","clothes","nift"]
+  },
+
+  {
+    id:"pilot", title:"Pilot (Commercial)", emoji:"🛫",
+    overview:"Operates aircraft for commercial airlines or private operators.",
+    daily:"Flight planning, safety checks and piloting aircraft.",
+    skills:["Situational awareness","Math/physics","Communication"],
+    roadmap:["CPL training","Flight hours & medical clearance"],
+    salary:"Entry: ₹6–20 LPA • Senior/Captain: ₹30–80 LPA+",
+    courses:["CPL flight training"],
+    colleges:["Flight training academies"],
+    similar:["airforce_pilot","aerospace_engineer"],
+    keywords:["pilot","flying","cpl","airplane"]
+  },
+
+  {
+    id:"airforce_officer", title:"Airforce Officer", emoji:"✈️",
+    overview:"Serves in air defense roles — pilot or ground operations in Air Force.",
+    daily:"Training, operations, leadership and technical duties.",
+    skills:["Fitness","Discipline","Technical knowledge"],
+    roadmap:["NDA/Service academies","Training & selection"],
+    salary:"Entry: Govt pay + allowances (varies)",
+    courses:["Defense training academies"],
+    colleges:["National defense academies"],
+    similar:["pilot","army_officer"],
+    keywords:["airforce","defense","nda","army"]
+  },
+
+  {
+    id:"army_officer", title:"Army Officer", emoji:"🪖",
+    overview:"Leads troops, plans operations and defends the nation.",
+    daily:"Training, field operations, leadership and logistics.",
+    skills:["Fitness","Teamwork","Decision-making"],
+    roadmap:["NDA/OTA","Training & regimental service"],
+    salary:"Entry: Govt pay + allowances",
+    courses:["Defense academies & training"],
+    colleges:["Defense institutes"],
+    similar:["police_officer","airforce_officer"],
+    keywords:["army","defense","nda","military"]
+  },
+
+  {
+    id:"police_officer", title:"Police Officer", emoji:"👮",
+    overview:"Maintains law & order, investigates crimes and ensures public safety.",
+    daily:"Patrols, investigations, community policing and paperwork.",
+    skills:["Physical fitness","Law knowledge","Communication"],
+    roadmap:["State police exams","Training academies"],
+    salary:"Entry: ₹2–6 LPA • Senior: ₹8–20 LPA (varies)",
+    courses:["Police training programs"],
+    colleges:["Police academies"],
+    similar:["army_officer","para_military"],
+    keywords:["police","law","security","investigate"]
+  },
+
+  {
+    id:"environmental_scientist", title:"Environmental Scientist", emoji:"🌱",
+    overview:"Studies environmental systems, conducts impact assessments and conservation work.",
+    daily:"Field research, data analysis and policy recommendations.",
+    skills:["Field methods","Data analysis","Environmental law"],
+    roadmap:["BSc/MSc Environment","Research projects","Internships"],
+    salary:"Entry: ₹3–8 LPA • Senior: ₹8–20 LPA",
+    courses:["Environmental science degrees"],
+    colleges:["Universities & research institutes"],
+    similar:["ecologist","conservation_officer"],
+    keywords:["environment","conservation","ecology","sustainability"]
+  },
+
+  {
+    id:"research_scientist", title:"Research Scientist", emoji:"🔬",
+    overview:"Conducts scientific research in academia or industry to advance knowledge.",
+    daily:"Experiments, data analysis, writing papers and grant proposals.",
+    skills:["Research methods","Statistics","Subject expertise"],
+    roadmap:["Masters & PhD","Publish research","Postdoc or industry labs"],
+    salary:"Entry: ₹4–10 LPA • Senior: ₹10–30 LPA (varies)",
+    courses:["Research methods & domain courses"],
+    colleges:["Top universities & research labs"],
+    similar:["professor","data_scientist"],
+    keywords:["research","phd","lab","science"]
+  },
+
+  {
+    id:"professor", title:"Professor / Academic", emoji:"🏫",
+    overview:"Teaches at university level and leads research projects in a specialization.",
+    daily:"Lectures, supervising students, research and publications.",
+    skills:["Teaching","Research","Writing"],
+    roadmap:["Masters → PhD → Postdoc → Faculty"],
+    salary:"Entry: ₹6–12 LPA • Senior: ₹12–30 LPA (varies by institute)",
+    courses:["PhD programs & pedagogy courses"],
+    colleges:["Universities & research institutions"],
+    similar:["research_scientist","lecturer"],
+    keywords:["professor","teaching","phd","academia"]
+  },
+
+  {
+    id:"civil_services", title:"Civil Services (IAS/IPS)", emoji:"🏛️",
+    overview:"Administrative leadership roles in government policy, administration and law enforcement.",
+    daily:"Policy implementation, administration, field visits and officer duties.",
+    skills:["General knowledge","Decision-making","Communication"],
+    roadmap:["Prepare for UPSC/CSE","State PCS as alternative","Training at LBSNAA"],
+    salary:"Entry: Govt pay + allowances (varies by post)",
+    courses:["UPSC coaching & GS studies"],
+    colleges:["Various backgrounds"],
+    similar:["public_administration","policy_analyst"],
+    keywords:["ias","upsC","civil service","administration"]
+  },
+
+  {
+    id:"social_worker", title:"Social Worker", emoji:"🤝",
+    overview:"Works with communities to address social issues and provide support.",
+    daily:"Field programs, counseling, community development.",
+    skills:["Empathy","Communication","Program management"],
+    roadmap:["Social work degree","NGO experience & fieldwork"],
+    salary:"Entry: ₹1.5–4 LPA • Senior: ₹5–12 LPA",
+    courses:["Social work & development studies"],
+    colleges:["Social work institutes"],
+    similar:["counselor","ngo_manager"],
+    keywords:["social","community","ngo","welfare"]
+  },
+
+  {
+    id:"psychologist", title:"Psychologist / Counselor", emoji:"🧭",
+    overview:"Provides mental health support, counseling, and therapy to individuals or groups.",
+    daily:"Therapeutic sessions, assessments and interventions.",
+    skills:["Counseling skills","Psychological assessment","Confidentiality"],
+    roadmap:["Psychology degree","Clinical training & licensure"],
+    salary:"Entry: ₹2–6 LPA • Senior: ₹6–18 LPA",
+    courses:["Clinical psychology courses"],
+    colleges:["Psychology departments & training centers"],
+    similar:["social_worker","psychiatrist"],
+    keywords:["psychology","therapy","counseling","mental health"]
+  },
+
+  {
+    id:"hr_manager", title:"HR Manager", emoji:"🧑‍💼",
+    overview:"Manages recruitment, employee relations, performance and policies.",
+    daily:"Hiring, payroll coordination, employee development and HR ops.",
+    skills:["Communication","Labor laws","People management"],
+    roadmap:["BBA/HR certifications","HR experience & strategic HR"],
+    salary:"Entry: ₹3–8 LPA • Senior: ₹10–30 LPA",
+    courses:["HR certifications & labor law courses"],
+    colleges:["Business schools & HR programs"],
+    similar:["talent_acquisition","learning_dev"],
+    keywords:["hr","recruitment","people","talent"]
+  },
+
+  {
+    id:"sales_manager", title:"Sales / Business Development", emoji:"📞",
+    overview:"Drives revenue by building relationships, closing deals and expanding markets.",
+    daily:"Client meetings, pitching, negotiations and reporting.",
+    skills:["Sales","Communication","Negotiation"],
+    roadmap:["Sales roles → BD → Managerial roles","Industry specialization"],
+    salary:"Entry: ₹2–8 LPA + incentives • Senior: ₹10–40 LPA+",
+    courses:["Sales training & CRM tools"],
+    colleges:["Business programs & sales bootcamps"],
+    similar:["account_manager","bd_manager"],
+    keywords:["sales","bd","client","crm"]
+  },
+
+  {
+    id:"entrepreneur", title:"Entrepreneur / Startup Founder", emoji:"🚀",
+    overview:"Starts and scales businesses — combines product, operations and fundraising skills.",
+    daily:"Product validation, fundraising, team building and operations.",
+    skills:["Leadership","Product sense","Finance"],
+    roadmap:["Idea validation","MVP","fundraising & scaling"],
+    salary:"Variable — depends on venture success",
+    courses:["Startup accelerators & founder programs"],
+    colleges:["Incubators & entrepreneurship programs"],
+    similar:["business_owner","product_manager"],
+    keywords:["startup","founder","entrepreneur","business"]
+  },
+
+  {
+    id:"agriculture_scientist", title:"Agricultural Scientist", emoji:"🌾",
+    overview:"Works on crop improvement, agronomy, sustainable farming and agri-innovation.",
+    daily:"Field trials, lab work, adoption of new techniques.",
+    skills:["Agronomy","Biotech","Field methods"],
+    roadmap:["BSc/MSc Agriculture","Research & extension work"],
+    salary:"Entry: ₹2–7 LPA • Senior: ₹6–15 LPA",
+    courses:["Agricultural degrees"],
+    colleges:["Agricultural universities & ICAR"],
+    similar:["soil_scientist","agri_entrepreneur"],
+    keywords:["agriculture","farming","agronomy","crop"]
+  },
+
+  {
+    id:"marine_biologist", title:"Marine Biologist", emoji:"🐚",
+    overview:"Studies ocean life, ecosystems and conservation of marine biodiversity.",
+    daily:"Field surveys, lab analysis and reporting.",
+    skills:["Fieldwork","Lab techniques","Data analysis"],
+    roadmap:["BSc/MSc Marine Biology","Research projects & fieldwork"],
+    salary:"Entry: ₹2–6 LPA • Senior: ₹6–15 LPA",
+    courses:["Marine biology programs"],
+    colleges:["Marine institutes & universities"],
+    similar:["environmental_scientist","oceanographer"],
+    keywords:["marine","ocean","biology","conservation"]
+  },
+
+  {
+    id:"statistician", title:"Statistician", emoji:"📐",
+    overview:"Applies statistical theory to analyze data, design experiments and support decisions.",
+    daily:"Modeling, analysis, consulting and report writing.",
+    skills:["Probability","Statistics","R/Python"],
+    roadmap:["Maths & Stats degree","Applied projects & internships"],
+    salary:"Entry: ₹4–10 LPA • Senior: ₹12–30 LPA",
+    courses:["Statistics & applied math courses"],
+    colleges:["IISc & universities"],
+    similar:["data_scientist","research_scientist"],
+    keywords:["statistics","probability","r","analysis"]
+  }
+]; // end CAREERS array
+
+/*************************************************************************
+ * Helpers & UI Utilities
+ *************************************************************************/
+function q(sel){ return document.querySelector(sel) }
+function qa(sel){ return Array.from(document.querySelectorAll(sel)) }
+function show(el){ el.style.display = el.dataset.display || "block" }
+function hide(el){ el.style.display = "none" }
+
+/* update range labels */
+["skill-prog","skill-anal","skill-creative"].forEach(id=>{
+  const el = q("#"+id);
+  if(el){
+    const outId = id.split("-")[1]+"-val";
+    el.oninput = ()=> q("#"+outId).innerText = el.value;
+  }
+});
+
+/*************************************************************************
+ * Matching logic: keyword + stream + marks + skills heuristic
+ *************************************************************************/
+function normalizeArr(text){
+  if(!text) return [];
+  return String(text).split(",").map(s=>s.trim().toLowerCase()).filter(Boolean);
+}
+
+function computeMatchScore(profile, career){
+  let score=0;
+  // stream match
+  const streamMatch = (() => {
+    if(profile.stream==="PCM" && career.keywords.some(k=>["math","physics","engineering","pcb","pcm","engineer","mechanical","civil","electrical","electronics","vlsi","aerospace","pilot"].includes(k))) return 25;
+    if(profile.stream==="PCB" && career.keywords.some(k=>["bio","medical","pharmacy","doctor","dent","nurse","marine","agriculture"].includes(k))) return 25;
+    if(profile.stream==="CSE" && career.keywords.some(k=>["ai","ml","code","software","data","fullstack","web","security"].includes(k))) return 25;
+    if(profile.stream==="Commerce" && career.keywords.some(k=>["commerce","finance","accounts","bank","tax","business","ca"].includes(k))) return 25;
+    if(profile.stream==="Arts" && career.keywords.some(k=>["design","music","fashion","writing","journalism","art","graphic"].includes(k))) return 20;
+    return 0;
+  })();
+  score += streamMatch;
+
+  // marks
+  const avgMarks = (profile.maths + profile.others)/2;
+  score += Math.min(20, Math.round(avgMarks/5)); // up to 20
+
+  // skills: programming & analytical weighted
+  let skillScore = profile.prog*4 + profile.anal*3 + profile.creative*2; // up to ~40
+  // bias skill score depending on career nature
+  const skillKeywords = career.keywords.join(" ");
+  if(skillKeywords.includes("design") || skillKeywords.includes("fashion") || skillKeywords.includes("graphic")) {
+    // creativity more important
+    skillScore = profile.creative*6 + profile.prog*1 + profile.anal*2;
+  }
+  score += Math.min(35, Math.round(skillScore)); // cap 35
+
+  // interests overlap
+  let interests = profile.interests;
+  let interestScore=0;
+  for(const it of interests){
+    if(it && (career.title.toLowerCase().includes(it) || career.overview.toLowerCase().includes(it) || career.keywords.join(" ").includes(it))) interestScore += 10;
+  }
+  score += Math.min(20, interestScore);
+
+  if(score>100) score=100;
+  return Math.round(score);
+}
+
+/*************************************************************************
+ * UI Rendering functions
+ *************************************************************************/
+function suggestCareers(profile){
+  const scored = CAREERS.map(c => ({...c, score: computeMatchScore(profile,c)}))
+                      .sort((a,b)=>b.score - a.score);
+  return scored.slice(0,8);
+}
+
+function renderSuggestions(suggestions, profile){
+  const area = q("#suggestions-area");
+  area.innerHTML = "";
+  suggestions.forEach(c=>{
+    const card = document.createElement("div");
+    card.className = "career-card";
+    card.innerHTML = `
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <div style="display:flex;align-items:center">
+          <div class="career-emoji">${c.emoji}</div>
+          <div>
+            <div style="font-weight:700">${c.title}</div>
+            <div class="lead small">${c.overview.slice(0,90)}${c.overview.length>90?"...":""}</div>
+          </div>
+        </div>
+        <div style="text-align:right">
+          <div style="font-weight:800">${c.score}%</div>
+          <div class="small">Match</div>
+        </div>
+      </div>
+      <div style="margin-top:8px;display:flex;gap:8px">
+        <button class="btn view-btn" data-id="${c.id}">View</button>
+        <button class="btn" style="background:#3b82f6" data-compare="${c.id}">Compare</button>
+      </div>
+    `;
+    area.appendChild(card);
+  });
+
+  // wire view & compare
+  qa(".view-btn").forEach(b=> b.onclick = e => {
+    const id = e.currentTarget.dataset.id; renderDetail(id, profile, suggestions);
+  });
+  qa("[data-compare]").forEach(b=> b.onclick = e => {
+    const id = e.currentTarget.dataset.compare; renderComparison(suggestions[0], CAREERS.find(x=>x.id===id));
+  });
+}
+
+function renderDetail(careerId, profile, suggestions){
+  const career = CAREERS.find(c=>c.id===careerId);
+  const area = q("#detail-area");
+  area.innerHTML = "";
+  if(!career) { area.innerHTML = "<div class='small'>Career not found</div>"; return; }
+
+  const container = document.createElement("div");
+  container.className = "card";
+  container.innerHTML = `
+    <div class="section-title">
+      <h3 style="margin:0">${career.emoji} ${career.title}</h3>
+      <div class="small">Match: ${computeMatchScore(profile,career)}%</div>
+    </div>
+
+    <div class="detail-grid" style="margin-top:12px">
+      <div>
+        <div><strong>Description</strong></div>
+        <p>${career.overview}</p>
+
+        <div><strong>Daily work</strong></div>
+        <p>${career.daily}</p>
+
+        <div><strong>Roadmap</strong></div>
+        <ol>${career.roadmap.map(s=>`<li>${s}</li>`).join("")}</ol>
+
+        <div><strong>Recommended Courses</strong></div>
+        <ul>${career.courses.map(s=>`<li>${s}</li>`).join("")}</ul>
+
+        <div style="margin-top:12px"><strong>Similar Careers</strong>
+          <div style="margin-top:8px">${(career.similar||[]).map(id=>{ const cc = CAREERS.find(x=>x.id===id); return `<button class="btn" style="background:#eef2ff;color:#111;border:1px solid #dbeafe;margin-right:6px" data-id="${cc?.id}">${cc?cc.emoji+" "+cc.title:id}</button>` }).join("")}</div>
+        </div>
+      </div>
+
+      <aside>
+        <div><strong>Skills Required</strong></div>
+        <div style="margin-top:8px">${career.skills.map(s=>`<div class="tag">${s}</div>`).join("")}</div>
+
+        <div style="margin-top:12px"><strong>Salary (approx.)</strong><p style="font-weight:700">${career.salary}</p></div>
+
+        <div style="margin-top:12px"><strong>Top Colleges / Places</strong>
+          <ul>${career.colleges ? career.colleges.map(x=>`<li class="small">${x}</li>`).join("") : "<li class='small'>Varies</li>"}</ul>
+        </div>
+      </aside>
+    </div>
+  `;
+  area.appendChild(container);
+  // wire similar career buttons
+  container.querySelectorAll("aside .btn[data-id], div button[data-id]").forEach(b=>{
+    b.onclick = e => renderDetail(e.currentTarget.dataset.id, profile, suggestions);
+  });
+  container.scrollIntoView({behavior:"smooth"});
+}
+
+function renderComparison(a,b){
+  const area = q("#detail-area");
+  area.innerHTML = "";
+  if(!a || !b) { area.innerHTML = "<div class='small'>Select two careers to compare</div>"; return; }
+  const html = `
+    <div class="card">
+      <div class="section-title"><h3 style="margin:0">Compare: ${a.title} vs ${b.title}</h3></div>
+      <table style="margin-top:12px">
+        <thead><tr><th>Feature</th><th>${a.title}</th><th>${b.title}</th></tr></thead>
+        <tbody>
+          <tr><td>Overview</td><td>${a.overview}</td><td>${b.overview}</td></tr>
+          <tr><td>Top Skills</td><td>${a.skills.join(", ")}</td><td>${b.skills.join(", ")}</td></tr>
+          <tr><td>Roadmap (high level)</td><td>${a.roadmap.slice(0,3).join(" → ")}</td><td>${b.roadmap.slice(0,3).join(" → ")}</td></tr>
+          <tr><td>Entry Salary</td><td>${a.salary}</td><td>${b.salary}</td></tr>
+          <tr><td>Similar Careers</td><td>${(a.similar||[]).map(id=> (CAREERS.find(c=>c.id===id)||{title:id}).title).join(", ")}</td><td>${(b.similar||[]).map(id=> (CAREERS.find(c=>c.id===id)||{title:id}).title).join(", ")}</td></tr>
+        </tbody>
+      </table>
+    </div>
+  `;
+  area.innerHTML = html;
+  area.scrollIntoView({behavior:"smooth"});
+}
+
+/*************************************************************************
+ * Wire main UI actions
+ *************************************************************************/
+q("#get-btn").onclick = ()=>{
+  const profile = {
+    name: q("#name").value || "Student",
+    stream: q("#stream").value,
+    maths: Number(q("#marks-maths").value || 0),
+    others: Number(q("#marks-others").value || 0),
+    prog: Number(q("#skill-prog").value || 1),
+    anal: Number(q("#skill-anal").value || 1),
+    creative: Number(q("#skill-creative").value || 1),
+    interests: normalizeArr(q("#interests").value || "")
+  };
+  const suggestions = suggestCareers(profile);
+  renderSuggestions(suggestions, profile);
+  q("#results").style.display = "block";
+  // open top detail
+  renderDetail(suggestions[0].id, profile, suggestions);
+};
+
+q("#clear-btn").onclick = ()=>{
+  ["#name","#interests","#worktype"].forEach(s=> q(s).value = "");
+  ["#marks-maths","#marks-others"].forEach(s=> q(s).value = 0);
+  ["#skill-prog","#skill-anal","#skill-creative"].forEach(s=> q(s).value = 3);
+  ["#prog-val","#anal-val","#creative-val"].forEach(s=> q(s).innerText = "3");
+  q("#results").style.display = "none";
+};
+
+/*************************************************************************
+ * Simple Chatbot (rule-based) + voice input + speech output
+ *************************************************************************/
+const chatBtn = q("#chatbot-btn"), chatWin = q("#chatbot-window"), chatBody = q("#chat-body");
+chatBtn.onclick = ()=> {
+  chatWin.style.display = chatWin.style.display === "flex" ? "none" : "flex";
+  if(chatWin.style.display === "flex") q("#chat-input").focus();
+};
+
+function addChatMessage(text, who="bot"){
+  const d = document.createElement("div");
+  d.className = "message " + (who==="user" ? "user" : "bot");
+  d.innerText = text;
+  chatBody.appendChild(d);
+  chatBody.scrollTop = chatBody.scrollHeight;
+}
+
+function botAnswer(text){
+  text = (text||"").toLowerCase();
+  if(text.includes("hello") || text.includes("hi")) return "Hello! I suggest careers, show roadmaps, skills and course recommendations. Try: 'Suggest careers for PCM 85 AI'";
+  // quick parse: find stream + marks
+  const m = text.match(/(\d{2,3})/);
+  const marks = m ? Number(m[1]) : null;
+  if(text.includes("suggest") || text.includes("which") || text.includes("careers")){
+    // find stream keyword
+    const stream = text.includes("pcm") ? "PCM" : (text.includes("pcb") ? "PCB" : (text.includes("cse") ? "CSE" : ""));
+    const profile = {
+      name:"You",
+      stream: stream || "PCM",
+      maths: marks || 75,
+      others: marks || 75,
+      prog: text.includes("ai") || text.includes("code") ? 4 : 3,
+      anal:3, creative:3,
+      interests: normalizeArr(text)
+    };
+    const sug = suggestCareers(profile).slice(0,4).map(s=>`${s.emoji} ${s.title} (${s.score}%)`).join(" • ");
+    return `Top suggestions: ${sug}. Click a suggestion on the page for details.`;
+  }
+  // if asking about a specific career
+  for(const c of CAREERS){
+    if(text.includes(c.title.toLowerCase().split(" ")[0]) || c.keywords.some(k=> text.includes(k))){
+      return `${c.emoji} ${c.title}: ${c.overview} Top skills: ${c.skills.slice(0,5).join(", ")}. Roadmap: ${c.roadmap.slice(0,3).join(" → ")}.`;
+    }
+  }
+  if(text.includes("roadmap")) return "Ask: 'roadmap for AI Engineer' or click a career card to see the full roadmap.";
+  if(text.includes("courses") || text.includes("course")) return "I list courses for each career in the details panel — open any career to view them.";
+  return "I can help with career suggestions, roadmaps, skills and courses. Try: 'Suggest careers for PCM 85 interested in AI'";
+}
+
+q("#send-btn").onclick = ()=>{
+  const txt = q("#chat-input").value.trim();
+  if(!txt) return;
+  addChatMessage(txt,"user");
+  q("#chat-input").value = "";
+  const reply = botAnswer(txt);
+  setTimeout(()=>{ addChatMessage(reply,"bot"); speak(reply); }, 300);
+};
+
+q("#chat-input").addEventListener("keydown", e=>{
+  if(e.key === "Enter") q("#send-btn").click();
+});
+
+// voice recognition for chatbot
+let recognitionChat;
+try{
+  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if(SpeechRecognition){
+    recognitionChat = new SpeechRecognition();
+    recognitionChat.lang = "en-IN";
+    recognitionChat.interimResults = false;
+    recognitionChat.maxAlternatives = 1;
+    q("#mic-btn").onclick = ()=>{
+      try{
+        recognitionChat.start();
+        q("#mic-btn").innerText = "⏳";
+        setTimeout(()=> q("#mic-btn").innerText = "🎤", 6000);
+      }catch(e){}
+    };
+    recognitionChat.onresult = (ev)=>{
+      const text = ev.results[0][0].transcript;
+      addChatMessage(text,"user");
+      const reply = botAnswer(text);
+      setTimeout(()=>{ addChatMessage(reply,"bot"); speak(reply); }, 300);
+    };
+    recognitionChat.onerror = ()=> { q("#mic-btn").innerText = "🎤" };
+  } else {
+    q("#mic-btn").style.display = "none";
+  }
+}catch(e){ q("#mic-btn").style.display = "none"; }
+
+/*************************************************************************
+ * Speech synthesis (voice output)
+ *************************************************************************/
+function speak(text){
+  if(!("speechSynthesis" in window)) return;
+  const ut = new SpeechSynthesisUtterance(text);
+  ut.lang = "en-GB";
+  ut.rate = 1;
+  window.speechSynthesis.cancel();
+  window.speechSynthesis.speak(ut);
+}
+
+/*************************************************************************
+ * Main voice input (profile voice capture)
+ *************************************************************************/
+let recognitionMain;
+q("#voice-main").onclick = ()=>{
+  try{
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if(!SpeechRecognition){ alert("Voice not supported in this browser"); return; }
+    recognitionMain = new SpeechRecognition();
+    recognitionMain.lang = "en-IN";
+    recognitionMain.interimResults = false;
+    recognitionMain.maxAlternatives = 1;
+    recognitionMain.start();
+    q("#voice-main").innerText = "⏳ Listening...";
+    recognitionMain.onresult = (ev) => {
+      const text = ev.results[0][0].transcript;
+      // naive parse: put text into interests input
+      q("#interests").value = text;
+      q("#voice-main").innerText = "🎤 Voice Input";
+    };
+    recognitionMain.onerror = ()=> q("#voice-main").innerText = "🎤 Voice Input";
+    recognitionMain.onend = ()=> q("#voice-main").innerText = "🎤 Voice Input";
+  } catch(e){
+    alert("Voice not supported or permission denied.");
+  }
+};
+
+/*************************************************************************
+ * Small UI tweaks: update range labels
+ *************************************************************************/
+["skill-prog","skill-anal","skill-creative"].forEach(id=>{
+  const el = q("#"+id);
+  if(el) el.oninput = ()=> q("#"+id.split("-")[1]+"-val").innerText = el.value;
+});
+
+/*************************************************************************
+ * Final small helper: clicking suggestion title sometimes triggers detail
+ *************************************************************************/
+document.addEventListener("click",(e)=>{
+  if(e.target && e.target.matches(".career-emoji, .career-card")) {
+    // noop - kept for extensibility
+  }
+});
+
+/*************************************************************************
+ * Initial small hint in chatbot
+ *************************************************************************/
+addChatMessage("Tip: Try 'Suggest careers for PCM 85 AI' or 'Roadmap for Data Scientist'","bot");
+
+</script>
+</body>
+</html>
